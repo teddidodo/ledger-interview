@@ -1,0 +1,40 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: ledger
+      POSTGRES_PASSWORD: ledger
+      POSTGRES_DB: ledger
+    ports:
+      - '5432:5432'
+    volumes:
+      - ledger_pg_data:/var/lib/postgresql/data
+
+  be:
+    build:
+      context: ./be
+    environment:
+      PORT: 3001
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_USER: ledger
+      DB_PASSWORD: ledger
+      DB_NAME: ledger
+      CORS_ORIGIN: http://localhost:5173
+    ports:
+      - '3001:3001'
+    depends_on:
+      - postgres
+
+  fe:
+    build:
+      context: ./ledger
+    environment:
+      API_PROXY_TARGET: http://be:3001
+    ports:
+      - '5173:5173'
+    depends_on:
+      - be
+
+volumes:
+  ledger_pg_data:

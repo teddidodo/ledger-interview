@@ -1,0 +1,243 @@
+.app {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 1.5rem;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.currency-select {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  min-width: 160px;
+}
+
+.currency-select label,
+.lookup-form__field label {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.currency-select select,
+.lookup-form__field input {
+  width: 100%;
+  padding: 0.65rem 0.85rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-heading);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.currency-select select:focus-visible,
+.lookup-form__field input:focus-visible,
+.lookup-form button:focus-visible {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-muted);
+}
+
+.dashboard {
+  flex: 1;
+}
+
+.dashboard-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.dashboard-card__toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.5rem;
+}
+
+.card__label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.card__meta {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.total-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.total-card__status {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-height: 2.75rem;
+  color: var(--text-muted);
+}
+
+.total-card__status--error {
+  color: var(--negative);
+}
+
+.total-card__amount {
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--text-heading);
+  font-variant-numeric: tabular-nums;
+}
+
+.lookup-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.lookup-card__header h2 {
+  margin-bottom: 0.35rem;
+}
+
+.lookup-form {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-end;
+}
+
+.lookup-form__field {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.lookup-form button {
+  padding: 0.65rem 1.25rem;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: var(--accent);
+  color: #041018;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: background 0.2s;
+}
+
+.lookup-form button:hover:not(:disabled) {
+  background: var(--accent-hover);
+}
+
+.balance-result {
+  border-radius: var(--radius-sm);
+  padding: 1rem 1.1rem;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.balance-result--idle {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px dashed var(--border);
+  color: var(--text-muted);
+}
+
+.balance-result--loading {
+  background: var(--accent-muted);
+  border: 1px solid rgba(59, 158, 255, 0.2);
+  flex-direction: row;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--text-heading);
+}
+
+.balance-result--error {
+  background: rgba(248, 113, 113, 0.08);
+  border: 1px solid rgba(248, 113, 113, 0.25);
+  color: var(--negative);
+}
+
+.balance-result--success {
+  background: var(--surface-elevated);
+  border: 1px solid var(--border);
+  gap: 0.65rem;
+}
+
+.balance-result__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.account-id {
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.04);
+  padding: 0.25rem 0.5rem;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.balance-result__amount {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  color: var(--text-heading);
+  font-variant-numeric: tabular-nums;
+}
+
+.amount--negative {
+  color: var(--negative);
+}
+
+.spinner {
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid rgba(59, 158, 255, 0.25);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .app {
+    padding: 1.25rem 1rem 1rem;
+    gap: 1.5rem;
+  }
+
+  .lookup-form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .lookup-form button {
+    width: 100%;
+  }
+}

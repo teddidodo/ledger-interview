@@ -1,0 +1,41 @@
+{
+  "name": "ledger-be",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "build": "nest build",
+    "start": "nest start",
+    "start:dev": "nest start --watch",
+    "start:prod": "node dist/main",
+    "generate:data": "ts-node -r tsconfig-paths/register src/generate-data.ts",
+    "ingest": "ts-node -r tsconfig-paths/register src/ingest/ingest.main.ts",
+    "ingest:prod": "node dist/ingest/ingest.main.js",
+    "seed": "ts-node -r tsconfig-paths/register src/seed.ts",
+    "db:migrate": "ts-node -r tsconfig-paths/register src/database/migrate.ts",
+    "db:migrate:undo": "ts-node -r tsconfig-paths/register src/database/migrate.ts --undo"
+  },
+  "dependencies": {
+    "@nestjs/common": "^11.0.12",
+    "@nestjs/config": "^4.0.2",
+    "@nestjs/core": "^11.0.12",
+    "@nestjs/platform-express": "^11.0.12",
+    "@nestjs/sequelize": "^11.0.0",
+    "dotenv": "^18.0.4",
+    "pg": "^8.14.1",
+    "pg-hstore": "^2.3.4",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.2",
+    "sequelize": "^6.37.7",
+    "sequelize-typescript": "^2.1.6",
+    "umzug": "^3.8.3"
+  },
+  "devDependencies": {
+    "@nestjs/cli": "^11.0.6",
+    "@nestjs/schematics": "^11.0.3",
+    "@types/express": "^5.0.1",
+    "@types/node": "^22.14.0",
+    "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^5.8.3"
+  }
+}
